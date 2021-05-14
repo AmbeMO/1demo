@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import {CatalogComponent} from './catalog/catalog.component';
 import { FormComponent } from './form/form.component'
 import {HeaderComponent} from "./header/header.component";
+import {IndexComponent} from "./index/index.module";
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {HeaderComponent} from "./header/header.component";
     AppComponent,
     CatalogComponent,
     FormComponent,
-    HeaderComponent
+    HeaderComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule
