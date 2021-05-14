@@ -1,0 +1,11 @@
+
+!/package-lock.json
+!/package.json
+/node_modules/
+!/.eslintignore
+/.eslintrc
+!/.eslintignore
+/package-lock.json
+/package.json
+
+/.eslintignore
