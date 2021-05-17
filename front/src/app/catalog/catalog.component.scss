@@ -22,4 +22,18 @@
 .main-item__row{
   display: flex;
   justify-content: space-between;
+
+
+}
+form{
+  p{
+
+  }
+  display: flex;
+  flex-direction: column;
+
+  input[type=submit]{
+    max-width: 200px;
+  }
+
 }
