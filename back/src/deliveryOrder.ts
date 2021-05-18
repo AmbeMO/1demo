@@ -1,4 +1,4 @@
-import {OrderItem} from './orderItem'
+import { OrderItem } from './orderItem';
 
 enum Status {
     checking,
@@ -7,13 +7,21 @@ enum Status {
 }
 class DeliveryOrder {
     private id: number
+
     private status: Status;
+
     private orderTime: Date;
+
     private quantity: number;
+
     private price: number;
+
     private weight: number;
+
     private deliveryAddress: string;
+
     private idSupplier: number;
+
     private orderItem: Array<string>;
 
     constructor(id:number,

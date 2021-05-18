@@ -7,6 +7,9 @@
   height: 100%;
   margin: 0 auto;
   max-width: 1450px;
+  p{
+    text-align: center;
+  }
 }
 .main{
   padding-top: 1rem;
@@ -26,14 +29,31 @@
 
 }
 form{
-  p{
-
-  }
   display: flex;
   flex-direction: column;
 
   input[type=submit]{
     max-width: 200px;
+  }
+  .catalog-product{
+    max-height: 100px;
+    display: flex;
+    //justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    border: 1px solid #000;
+    margin: 5px 0px;
+    padding: 5px;
+
+    .catalog-product__delete{
+      margin: 5px;
+      background-color: #170C0C;
+      color: #FFFFF8;
+      padding: 5px;
+      line-height: 20px;
+      font-size: 15px;
+    }
+
   }
 
 }

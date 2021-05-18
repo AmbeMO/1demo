@@ -1,55 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
+
   <div class="wrapper">
     <div class="main">
       <div class="container">
                 <p>List of items</p>
+
+          <div *ngIf="!loading; else loadingBlock" class="catalog__loading">
               <form action="" method="POST">
-                <input type="checkbox" id="oder1" name="order1">
-                <label for="oder1">****</label>
 
-                <input type="checkbox" id="oder2" name="order2">
-                <label for="oder2">****</label>
-
-                <input type="checkbox" id="oder3" name="order3">
-                <label for="oder3">****</label>
-
-                <input type="checkbox" id="oder4" name="order4">
-                <label for="oder4">****</label>
-
-                <input type="checkbox" id="oder5" name="order5">
-                <label for="oder5">****</label>
-
-                <input type="checkbox" id="oder6" name="order6">
-                <label for="oder6">****</label>
-
-                <input type="checkbox" id="oder7" name="order7">
-                <label for="oder7">****</label>
-
-                <input type="checkbox" id="oder8" name="order8">
-                <label for="oder8">****</label>
-
-                <input type="checkbox" id="oder9" name="order9">
-                <label for="oder9">****</label>
-
-                <input type="checkbox" id="oder10" name="order10">
-                <label for="oder10">****</label>
+                <div *ngFor="let product of products" class="catalog-product" >
+                    <input type="checkbox"  [class.completed]="product.completed">
+                    <label>{{product.title | titlecase}}</label>
+                    <p>{{product.id}}</p>
+                </div>
 
                 <input type="submit" value="Order">
 
               </form>
+          </div>
+
+        <ng-template #loadingBlock>
+          <p>Loading...</p>
+        </ng-template>
       </div>
     </div>
   </div>
 
-
-</body>
-</html>
