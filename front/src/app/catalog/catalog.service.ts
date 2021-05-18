@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {delay} from "rxjs/operators";
-import {Observable} from "rxjs";
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {catchError, delay} from 'rxjs/operators';
+import {Observable, throwError} from 'rxjs';
+
 
 export interface Product {
   completed: boolean;
@@ -19,8 +20,19 @@ export class ProductService {
   }
 
   fetchProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>('https://jsonplaceholder.typicode.com/todos?_limit=8')
+    let params = new HttpParams();
+    params = params.append('_limit', '4');
+    params = params.append('custom', 'anything');
+
+    return this.http.get<Product[]>('https://jsonplaceholder.typicode.com/todos', {
+      // params: new HttpParams().set('_limit', '9')
+      params
+    } )
       .pipe(delay(500));
+    catchError(error => {
+        console.log('Error', error.message);
+        return throwError(error);
+      });
   }
 
 }

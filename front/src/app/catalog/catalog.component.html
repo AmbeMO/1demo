@@ -4,22 +4,28 @@
       <div class="container">
                 <p>List of items</p>
 
-          <div *ngIf="!loading; else loadingBlock" class="catalog__loading">
-              <form action="" method="POST">
+        <p *ngIf="error; else productsBlock" class="error">{{error}}</p>
 
-                <div *ngFor="let product of products" class="catalog-product" >
-                    <input type="checkbox"  [class.completed]="product.completed">
-                    <label>{{product.title | titlecase}}</label>
-                    <p>{{product.id}}</p>
-                </div>
+        <ng-template #productsBlock>
 
-                <input type="submit" value="Order">
+            <div *ngIf="!loading; else loadingBlock" class="catalog__loading">
+                <form action="" method="POST">
 
-              </form>
-          </div>
+                  <div *ngFor="let product of products" class="catalog-product" >
+                      <input type="checkbox"  [class.completed]="product.completed">
+                      <label>{{product.title | titlecase}}</label>
+                      <p>{{product.id}}</p>
+                  </div>
 
-        <ng-template #loadingBlock>
-          <p>Loading...</p>
+                  <input type="submit" value="Order">
+
+                </form>
+            </div>
+
+            <ng-template #loadingBlock>
+               <p>Loading...</p>
+            </ng-template>
+
         </ng-template>
       </div>
     </div>

@@ -2,11 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Product, ProductService} from './catalog.service';
 
-// export interface Product {
-//   completed: boolean;
-//   title: string;
-//   id?: number;
-// }
 
 @Component({
   selector: 'app-catalog',
@@ -16,8 +11,9 @@ import {Product, ProductService} from './catalog.service';
 
 export class CatalogComponent implements OnInit{
   products: Product[] = [];
+  error = '';
 
-loading = false;
+  loading = false;
 
   constructor(private productService: ProductService) {}
 
@@ -31,7 +27,9 @@ loading = false;
     .subscribe(products => {
       this.products = products;
       this.loading = false;
-  });
+  }, error => {
+      this.error = error.message; // ouput error
+    });
 
 }
 }
