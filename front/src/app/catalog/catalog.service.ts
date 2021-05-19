@@ -6,7 +6,9 @@ import {Observable, throwError} from 'rxjs';
 
 export interface Product {
   completed: boolean;
-  title: string;
+  name: string;
+  price: string;
+  category: string;
   id?: number;
 }
 
@@ -21,10 +23,10 @@ export class ProductService {
 
   fetchProducts(): Observable<Product[]> {
     let params = new HttpParams();
-    params = params.append('_limit', '4');
-    params = params.append('custom', 'anything');
+    params = params.append('_limit', '5');
+    // params = params.append('custom', 'anything');
 
-    return this.http.get<Product[]>('https://jsonplaceholder.typicode.com/todos', {
+    return this.http.get<Product[]>('http://localhost:8080/api/product', {
       // params: new HttpParams().set('_limit', '9')
       params,
       observe: 'response' // observe - which data type we want

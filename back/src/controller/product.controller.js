@@ -11,6 +11,11 @@ class ProductController {
     const product = await db.query('SELECT * FROM "product" WHERE id = $1', [id]);
     res.json(product.rows[0]);
   }
+
+  async get5Product(req, res) {
+    const products = await db.query('SELECT * FROM product ORDER BY id LIMIT 5');
+    res.json(products.rows);
+  }
 }
 
 module.exports = new ProductController();

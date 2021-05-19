@@ -2,9 +2,10 @@
   <div class="wrapper">
     <div class="main">
       <div class="container">
-                <p>List of items</p>
 
-        <p *ngIf="error; else productsBlock" class="error">{{error}}</p>
+
+        <div class="container__column">
+           <p *ngIf="error; else productsBlock" class="error">{{error}}</p>
 
         <ng-template #productsBlock>
 
@@ -12,21 +13,30 @@
                 <form action="" method="POST">
 
                   <div *ngFor="let product of products" class="catalog-product" >
+
                       <input type="checkbox"  [class.completed]="product.completed">
-                      <label>{{product.title | titlecase}}</label>
-                      <p>{{product.id}}</p>
+                    <div class="catalog__column">
+                         <p class="catalog__name">{{product.name}}</p>
+                        <div class="category__info" >
+                          <p class="catalog__category"> category: {{product.category}}</p>
+                          <p class="catalog__price"> price for 1 item: {{product.price | number}}</p>
+                        </div>
+                    </div>
+
                   </div>
 
-                  <input type="submit" value="Order">
-
                 </form>
+
+              <input type="submit" value="Order">
             </div>
 
-            <ng-template #loadingBlock>
-               <p>Loading...</p>
-            </ng-template>
 
-        </ng-template>
+              <ng-template #loadingBlock>
+                 <p>Loading...</p>
+              </ng-template>
+
+           </ng-template>
+        </div>
       </div>
     </div>
   </div>

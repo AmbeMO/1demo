@@ -21,7 +21,9 @@ blink { text-decoration: none; }
 nobr { white-space: normal; }
 button{cursor:pointer; border:none;}
 body *{ box-sizing: border-box;outline:none;
-  font-family: 'Roboto', sans-serif;text-transform: uppercase;}
+  font-family: 'Roboto', sans-serif;text-transform: uppercase;
+
+}
 
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap');
@@ -37,3 +39,4 @@ body *{ box-sizing: border-box;outline:none;
   padding: 5px;
   border-radius: 4px;
 }
+
