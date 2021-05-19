@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule, Provider} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {CatalogComponent} from './catalog/catalog.component';
@@ -9,9 +9,15 @@ import {IndexComponent} from './index/index.module';
 import {FooterComponent} from './footer/footer.module';
 
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthInterceptor} from './auth.interceptor';
 
 
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: AuthInterceptor,
+  multi: true// if false, only one interceptor is avaiable
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +33,7 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

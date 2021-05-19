@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {catchError, delay} from 'rxjs/operators';
+import {catchError, delay, map} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
 
 
@@ -26,13 +26,20 @@ export class ProductService {
 
     return this.http.get<Product[]>('https://jsonplaceholder.typicode.com/todos', {
       // params: new HttpParams().set('_limit', '9')
-      params
+      params,
+      observe: 'response' // observe - which data type we want
     } )
-      .pipe(delay(500));
-    catchError(error => {
-        console.log('Error', error.message);
-        return throwError(error);
-      });
+      .pipe(
+        map(response => { // map - transform data (to console)
+          console.log('Response', response);
+          return response.body;
+        }),
+        delay(500),
+        catchError(error => {
+          console.log('Error', error.message);
+          return throwError(error);
+        })
+      );
   }
 
 }
