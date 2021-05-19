@@ -11,6 +11,7 @@ import {FooterComponent} from './footer/footer.module';
 import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './auth.interceptor';
+import {AppRoutingModule} from "./app-routing.module";
 
 
 const INTERCEPTOR_PROVIDER: Provider = {
@@ -31,7 +32,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]

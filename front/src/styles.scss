@@ -30,3 +30,10 @@ body *{ box-sizing: border-box;outline:none;
 .error {
   color: red; // for errors
 }
+
+.active{
+  background-color: #FFFFF8;
+  color: #170C0C;
+  padding: 5px;
+  border-radius: 4px;
+}
